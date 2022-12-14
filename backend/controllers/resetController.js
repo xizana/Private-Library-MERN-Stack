@@ -23,9 +23,7 @@ const resetPassword = async (req, res) => {
             const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "300s" })
             const setUserToken = await User.findOneAndUpdate({ _id: user._id }, { verifytoken: token }, { new: true })
             // console.log("setUserToken", setUserToken)
-            // if (!token) {
-            //     res.status(401).json({ mssg: "This link is no longer valid" })
-            // }
+            
 
             // SMTP transport
             const transporter = nodemailer.createTransport({
